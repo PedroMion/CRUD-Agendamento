@@ -10,7 +10,7 @@ Para utilizar este projeto, é necessário possuir uma instância de MySQL rodan
 
 - Criar um banco de dados chamado agendamento.
 - Abrir o projeto no NetBeans (recomendado NetBeans versão 8.2, versões mais recentes da IDE não possuem suporte nativo para Hibernates, que deve ser instalado manualmente. Link para instalação: https://netbeans-ide.informer.com/download/).
-- Instalar bibliotecas, se necessário.
+- Instalar biblioteca Driver JDBC do MySQL. Botão direito no projeto -> Propriedades -> Bibliotecas -> Adicionar biblioteca -> Driver JDBC do MySQL -> Adicionar biblioteca -> Ok (Se não adicionada)
 - Configurar arquivos persistence.xml e hibernate.cfg.xml para as informações do seu banco de dados.
 - Adicionar a conexão com o banco no NetBeans (Se necessário)
 - Adicionar Glassfish server 4.1.1 para rodar a aplicação.
