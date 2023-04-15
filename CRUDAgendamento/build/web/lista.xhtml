@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Lista</title>
+        <h:outputStylesheet library="css" name="lista.css" />
+    </h:head>
+    <h:body>
+        <h:form styleClass="header">
+           <p:toolbar styleClass="bar">
+                <f:facet name="right">
+                    <p:menuButton value="Menu" styleClass="button">
+                        <p:menuitem value="Criar" outcome="adicionar.xhtml" icon="ui-icon-disk" />
+                        <p:menuitem value="Atualizar" outcome="alterar.xhtml" icon="ui-icon-arrowrefresh-1-w" />
+                        <p:menuitem value="Remover" outcome="excluir.xhtml" ajax="false" icon="ui-icon-close" />
+                        <p:menuitem value="Buscar" outcome="lista.xhtml" ajax="false" icon="ui-icon-search" />
+                        <p:menuitem value="Início" outcome="index.xhtml" icon="ui-icon-extlink" />
+                    </p:menuButton>
+                </f:facet>
+            </p:toolbar> 
+        </h:form>
+        
+        
+        <div class="container">
+            <div class="textArea">
+                <h1 class="text">Ver todos os agendamentos</h1>
+            </div>
+            <h:form>
+                <p:dataTable var="agendamento" value="#{listaBean.retornaLista()}" id="lista" styleClass="table">
+                    <p:column headerText="ID">
+                        <h:outputText value="#{agendamento.id}" />
+                    </p:column>
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{agendamento.nome}" />
+                    </p:column>
+                    <p:column headerText="CPF">
+                        <h:outputText value="#{agendamento.cpf}" />
+                    </p:column>
+                    <p:column headerText="Observacoes">
+                        <h:outputText value="#{agendamento.observacao}" />
+                    </p:column>
+                    <p:column headerText="Data">
+                        <h:outputText value="#{agendamento.data}" />
+                    </p:column>
+                    <p:column headerText="Deletar" styleClass="buttonColumn">
+                        <p:commandButton value="Deletar" action="#{manipularBean.remover}" update="lista" styleClass="ui-button-danger deleteButton" >
+                            <f:setPropertyActionListener target="#{manipularBean.id}" value="#{agendamento.id}" />
+                            <p:confirm header="Confirmação" message="Tem certeza que deseja excluir?" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                        <p:confirmDialog global="true">
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                        </p:confirmDialog>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+            <div class="buttonArea">
+                <p>
+                    <p:button value="Pesquisar por nome ou CPF" outcome="pesquisar.xhtml" class="button" />
+                </p>
+                <p>
+                    <p:button value="Alterar agendamento" outcome="alterar.xhtml" class="button" />
+                </p>
+            </div>
+        </div>
+            
+            
+    </h:body>
+</html>

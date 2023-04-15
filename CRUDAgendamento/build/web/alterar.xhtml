@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Alterar</title>
+        <h:outputStylesheet library="css" name="alterar.css" />
+    </h:head>
+    <h:body>
+        <h:form styleClass="header">
+           <p:toolbar>
+                <f:facet name="right">
+                    <p:menuButton value="Menu" styleClass="button">
+                        <p:menuitem value="Criar" outcome="adicionar.xhtml" icon="ui-icon-disk" />
+                        <p:menuitem value="Atualizar" outcome="alterar.xhtml" icon="ui-icon-arrowrefresh-1-w" />
+                        <p:menuitem value="Remover" outcome="excluir.xhtml" ajax="false" icon="ui-icon-close" />
+                        <p:menuitem value="Buscar" outcome="lista.xhtml" ajax="false" icon="ui-icon-search" />
+                        <p:menuitem value="Início" outcome="index.xhtml" icon="ui-icon-extlink" />
+                    </p:menuButton>
+                </f:facet>
+            </p:toolbar> 
+        </h:form>
+        
+        <div class="container">
+            <p class="text">Alterar agendamento:</p>
+            <h:form styleClass="form">
+                <p:panelGrid columns="2" styleClass="grid">
+                    <h:outputLabel for="id" value="ID da consulta a ser alterada:" />
+                    <p:inputText id="id" value="#{manipularBean.id}" required="true" requiredMessage="ID é obrigatório" styleClass="input"/>
+
+                    <h:outputLabel for="nome" value="Novo nome:" />
+                    <p:inputText id="nome" value="#{manipularBean.nome}" styleClass="input" />
+
+                    <h:outputLabel for="cpf" value="Novo cpf:" />
+                    <p:inputText id="cpf" value="#{manipularBean.cpf}" styleClass="input" />
+
+                    <h:outputLabel for="observacoes" value="Observacoes:" />
+                    <p:inputText id="observacoes" value="#{manipularBean.observacoes}" styleClass="input" />
+
+                </p:panelGrid>
+                <p:commandButton type="submit" value="Alterar" action="#{manipularBean.alterar()}" update="messages" styleClass="button" />
+                <p:messages id="messages" showDetail="true" closable="true" />
+
+            </h:form>
+        </div>
+        
+    </h:body>
+</html>

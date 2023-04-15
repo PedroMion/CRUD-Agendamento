@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Adicionar</title>
+        <h:outputStylesheet library="css" name="adicionar.css" />
+    </h:head>
+    <h:body>
+        <h:form styleClass="header">
+           <p:toolbar styleClass="bar">
+                <f:facet name="right">
+                    <p:menuButton value="Menu" styleClass="button">
+                        <p:menuitem value="Criar" outcome="adicionar.xhtml" icon="ui-icon-disk" />
+                        <p:menuitem value="Atualizar" outcome="alterar.xhtml" icon="ui-icon-arrowrefresh-1-w" />
+                        <p:menuitem value="Remover" outcome="excluir.xhtml" ajax="false" icon="ui-icon-close" />
+                        <p:menuitem value="Buscar" outcome="lista.xhtml" ajax="false" icon="ui-icon-search" />
+                        <p:menuitem value="Início" outcome="index.xhtml" icon="ui-icon-extlink" />
+                    </p:menuButton>
+                </f:facet>
+            </p:toolbar> 
+        </h:form>
+        
+        <div class="container">
+            <p class="text">Adicionar agendamento:</p>
+            <h:form styleClass="form">
+                <p:panelGrid columns="2" styleClass="grid">
+                    <h:outputLabel for="nome" value="Nome:" />
+                    <p:inputText id="nome" value="#{agendamentoBean.nome}" required="true" requiredMessage="Nome é obrigatório" styleClass="input" />
+
+                    <h:outputLabel for="cpf" value="CPF:" />
+                    <p:inputText id="cpf" value="#{agendamentoBean.cpf}" required="true" requiredMessage="CPF é obrigatório" styleClass="input" />
+
+                    <h:outputLabel for="observacoes" value="Observações:" />
+                    <p:inputTextarea id="observacoes" value="#{agendamentoBean.observacoes}" rows="5" styleClass="input" />
+
+                    <h:outputLabel for="data" value="Data:" />
+                    <p:calendar id="data" value="#{agendamentoBean.data}" pattern="dd/MM/yyyy HH:mm" required="true" requiredMessage="Data é obrigatória" styleClass="input" />
+
+                </p:panelGrid>
+                <p:commandButton type="submit" value="Enviar" action="#{agendamentoBean.adicionar()}" update="messages" styleClass="button" />
+                <p:messages id="messages" showDetail="true" closable="true" />
+            </h:form>
+        </div>
+    </h:body>
+</html>
+
